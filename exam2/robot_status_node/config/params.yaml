@@ -1,0 +1,28 @@
+# exam2 的参数文件
+#
+# 注意：参数文件的键要写「/命名空间/节点名」，因为 launch 里给节点设置了
+# namespace="robot1" 又用 name 改了名字，节点的完整名字是 /robot1/atil_1 这样。
+# 只写 atil_1 的话匹配不上，参数不会生效（节点会用代码里的默认值）。
+#
+# 话题名、服务名前面加 / ，表示用全局名字，
+# 这样节点虽然放进了 robot1 命名空间，话题仍然是 /robot_status，服务仍然是 /add_two_ints。
+
+/robot1/atil_1:
+  ros__parameters:
+    topic_name: "/robot_status"
+    publish_rate: 1.0
+    robot_name: "atil_1"
+
+/robot1/atil_1_subscriber:
+  ros__parameters:
+    topic_name: "/robot_status"
+
+/robot1/atil_1_server:
+  ros__parameters:
+    service_name: "/add_two_ints"
+
+/robot1/atil_1_client:
+  ros__parameters:
+    service_name: "/add_two_ints"
+    a: 3
+    b: 5
